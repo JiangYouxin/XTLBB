@@ -114,11 +114,10 @@ void DumpRecvBuffer(const char *buf, int len)
 int send_filter(char * dst, const char * src, int len)
 {
 	unsigned char command = (unsigned char)src[0];
-	/*
+
 	char buffer[256];
 	wsprintfA(buffer, "in send_filter, %02x", (unsigned char)src[0]); 
 	OutputDebugString(buffer);
-	*/
 
 	// ÆÕÍ¨´ò¹ÖµÄ¸¨Öú
 	if (g_mode == 0)
