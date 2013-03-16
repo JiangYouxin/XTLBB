@@ -276,10 +276,10 @@ void InitHook()
 	DetourTransactionBegin();
 	DetourUpdateThread(GetCurrentThread());
 	DetourAttach((PVOID *)&pOrigSend, fake_send);
-	DetourAttach((PVOID *)&pOrigRecv, fake_recv);
+	//DetourAttach((PVOID *)&pOrigRecv, fake_recv);
 	DetourAttach((PVOID *)&pOrigWndProc, fake_WndProc);
-	DetourAttach((PVOID *)&pOrigFindWindow, MyFindWindowW);
-	DetourAttach((PVOID *)&pOrigFindWindowEx, MyFindWindowExW);
+	//DetourAttach((PVOID *)&pOrigFindWindow, MyFindWindowW);
+	//DetourAttach((PVOID *)&pOrigFindWindowEx, MyFindWindowExW);
 	DetourTransactionCommit();	
 }
 
@@ -290,10 +290,10 @@ void FiniHook()
 	DetourTransactionBegin();
 	DetourUpdateThread(GetCurrentThread());
 	DetourDetach((PVOID *)&pOrigSend, fake_send);
-	DetourDetach((PVOID *)&pOrigRecv, fake_recv);
+	//DetourDetach((PVOID *)&pOrigRecv, fake_recv);
 	DetourDetach((PVOID *)&pOrigWndProc, fake_WndProc);
-	DetourDetach((PVOID *)&pOrigFindWindow, MyFindWindowW);
-	DetourDetach((PVOID *)&pOrigFindWindowEx, MyFindWindowExW);
+	//DetourDetach((PVOID *)&pOrigFindWindow, MyFindWindowW);
+	//DetourDetach((PVOID *)&pOrigFindWindowEx, MyFindWindowExW);
 	DetourTransactionCommit();		
 }
 
