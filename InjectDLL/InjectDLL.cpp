@@ -110,6 +110,7 @@ int WINAPI fake_send(SOCKET s, const char * buf, int len, int flags)
 void InitHook()
 {
 	pOrigSend = send;
+	pOrigRecv = recv;
 	g_hWnd = GetForegroundWindow();
 
 	MyTrace("I am in.");
