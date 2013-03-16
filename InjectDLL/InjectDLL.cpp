@@ -9,6 +9,7 @@
 #include <stdarg.h>
 
 #include "TlbbStruct.h"
+#include "LuaClient.h"
 
 typedef DWORD SOCKET;
 extern "C" int WINAPI send(SOCKET s, const char *buf, int len, int flags);
@@ -52,13 +53,13 @@ int send_filter(char * dst, const char * src, int len)
 	unsigned char command = (unsigned char)src[0];
 
 	// 保存最新的打怪包
-	if(!g_skill_init && command == SKILL_CODE)
+	if(!g_skill_init && command == LuaClient::GetSkillCode())
 	{
 		memcpy(&g_skill, src, sizeof(SKILL));
 		g_skill_init = true;
 	}
 	// 如果是选怪包，用打怪包代替
-	if(command == SELECT_CODE && g_skill_init)
+	if(command == LuaClient::GetSelectCode() && g_skill_init)
 	{
 		PSELECT pse = (PSELECT)src;
 		g_skill.id = pse->id;

@@ -222,6 +222,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\LuaClient.cpp"
+				>
+			</File>
+			<File
 				RelativePath="StdAfx.cpp"
 				>
 				<FileConfiguration
@@ -250,6 +254,10 @@
 			>
 			<File
 				RelativePath=".\LdjStruct.h"
+				>
+			</File>
+			<File
+				RelativePath=".\LuaClient.h"
 				>
 			</File>
 			<File

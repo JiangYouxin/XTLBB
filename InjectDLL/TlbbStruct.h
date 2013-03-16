@@ -4,7 +4,6 @@
 #pragma pack(1)
 
 // 放技能的数据包
-#define SKILL_CODE 0x45
 typedef struct _SKILL
 {
 	WORD code;
@@ -16,7 +15,6 @@ typedef struct _SKILL
 } SKILL, * PSKILL;
 
 // 选怪的数据包
-#define SELECT_CODE 0x7E
 typedef struct _SELECT
 {
 	WORD code;

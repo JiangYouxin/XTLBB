@@ -201,10 +201,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\FileUtility.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\GuajiScriptImpl.cpp"
 				>
 			</File>
@@ -263,10 +259,6 @@
 			>
 			<File
 				RelativePath=".\AIScriptImpl.h"
-				>
-			</File>
-			<File
-				RelativePath=".\FileUtility.h"
 				>
 			</File>
 			<File
