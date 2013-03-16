@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Log.h"
 
-void Log(const char *format, ...)
+void MyLog(const char *format, ...)
 {
 	va_list v;
 	va_start(v, format);
