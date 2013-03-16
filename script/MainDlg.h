@@ -5,6 +5,8 @@
 #pragma once
 
 #include "script.h"
+#include "AIScriptImpl.h"
+#include "InjectScriptImpl.h"
 
 class CMainDlg : public CDialogImpl<CMainDlg>, public CUpdateUI<CMainDlg>,
 		public CMessageFilter, public CIdleHandler
@@ -106,17 +108,12 @@ public:
 
 		// 初始化各个Script
 		ScriptFactory::Init(m_hWnd);
-		ScriptFactory::CreateScript(new AIScript, 0, IDC_STATIC0);
-		ScriptFactory::CreateScript(new AIScript, 1, IDC_STATIC1);
-		ScriptFactory::CreateScript(new AIScript2, 2, IDC_STATIC2);
-		ScriptFactory::CreateScript(new AIScript2, 3, IDC_STATIC3);
-		ScriptFactory::CreateScript(new InjectScript, 4, IDC_STATIC4);
-		ScriptFactory::CreateScript(new InjectScript, 5, IDC_STATIC5);	
-
-		/*
-		ScriptFactory::CreateScript(new AIScript, 6, IDC_STATIC6);
-		ScriptFactory::CreateScript(new SimpleScript, 7, IDC_STATIC7);
-		*/
+		ScriptFactory::CreateScript(new AIScriptImpl, 0, IDC_STATIC0);
+		ScriptFactory::CreateScript(new AIScriptImpl, 1, IDC_STATIC1);
+		ScriptFactory::CreateScript(new AIScriptImpl, 2, IDC_STATIC2);
+		ScriptFactory::CreateScript(new AIScriptImpl, 3, IDC_STATIC3);
+		ScriptFactory::CreateScript(new InjectScriptImpl, 4, IDC_STATIC4);
+		ScriptFactory::CreateScript(new InjectScriptImpl, 5, IDC_STATIC5);	
 
 		// 启动Timer
 		SetTimer(822, 10);

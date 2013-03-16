@@ -3,6 +3,7 @@
 
 
 #include "UDPBroadcast.h"
+#include "TlbbScript.h"
 
 extern HWND g_hWnd;
 
@@ -20,12 +21,12 @@ class ScriptFactory
 public:
 	static void Init(HWND hwnd)
 	{
-		ScriptBase::InitScript();
+		TlbbScript::InitScript();
 		for(int i = 0; i < 8; i++)
 			scripts[i] = NULL;
 		g_hwnd = hwnd;
 	}
-	static void CreateScript(ScriptBase * psb, int hotKey, DWORD id)
+	static void CreateScript(TlbbScript * psb, int hotKey, DWORD id)
 	{
 		scripts[hotKey] = psb;
 		ids[hotKey] = id;
@@ -44,7 +45,7 @@ public:
 		char buffer[256];
 		
 		sockaddr_in addr;
-		if(g_bServer && ScriptBase::g_pbc->RecvBroadcast(buffer, 256, &addr) > 0)
+		if(g_bServer && TlbbScript::g_pbc->RecvBroadcast(buffer, 256, &addr) > 0)
 		{
 			PlaySound("C:\\lang.wav", NULL, SND_ASYNC | SND_FILENAME);
 			SetWindowText(g_hwnd, buffer);
@@ -70,7 +71,7 @@ public:
 		}
 	}
 public:
-	static ScriptBase * scripts[8];
+	static TlbbScript * scripts[8];
 	static DWORD ids[8];
 	static HWND g_hwnd;
 };

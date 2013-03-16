@@ -13,11 +13,11 @@
 #include "UDPBroadcast.h"
 #include "script.h"
 
-ScriptBase * ScriptFactory::scripts[8];
+TlbbScript * ScriptFactory::scripts[8];
 DWORD ScriptFactory::ids[8];
 HWND ScriptFactory::g_hwnd;
-UDPBroadcast * ScriptBase::g_pbc;
-IQMFunctionPtr ScriptBase::g_obj;
+UDPBroadcast * TlbbScript::g_pbc;
+IQMFunctionPtr TlbbScript::g_obj;
 
 DWORD g_bServer;
 DWORD g_bSaveBmp;

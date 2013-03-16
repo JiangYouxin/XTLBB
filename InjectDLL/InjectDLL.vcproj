@@ -290,6 +290,7 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						PreprocessorDefinitions=""
+						UsePrecompiledHeader="0"
 					/>
 				</FileConfiguration>
 			</File>
@@ -311,6 +312,7 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						PreprocessorDefinitions=""
+						UsePrecompiledHeader="0"
 					/>
 				</FileConfiguration>
 			</File>
@@ -336,6 +338,7 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						PreprocessorDefinitions=""
+						UsePrecompiledHeader="0"
 					/>
 				</FileConfiguration>
 			</File>
@@ -357,6 +360,7 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						PreprocessorDefinitions=""
+						UsePrecompiledHeader="0"
 					/>
 				</FileConfiguration>
 			</File>
@@ -378,6 +382,7 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						PreprocessorDefinitions=""
+						UsePrecompiledHeader="0"
 					/>
 				</FileConfiguration>
 			</File>
