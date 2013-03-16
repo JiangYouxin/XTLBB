@@ -256,6 +256,10 @@
 				RelativePath="StdAfx.h"
 				>
 			</File>
+			<File
+				RelativePath=".\TlbbStruct.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Detours"

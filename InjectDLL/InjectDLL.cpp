@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-#include "LdjStruct.h"
+#include "TlbbStruct.h"
 
 typedef DWORD SOCKET;
 extern "C" int WINAPI send(SOCKET s, const char *buf, int len, int flags);
@@ -52,10 +52,6 @@ int send_filter(char * dst, const char * src, int len)
 {
 	unsigned char command = (unsigned char)src[0];
 
-	char buffer[256];
-	wsprintfA(buffer, "in send_filter, %02x", (unsigned char)src[0]); 
-	OutputDebugString(buffer);
-
 	// 普通打怪的辅助
 	if (g_mode == 0)
 	{
@@ -89,53 +85,10 @@ int send_filter(char * dst, const char * src, int len)
 
 		return sizeof(SELECT);
 	}
-	// 记录种地的数据包
-	else if (g_mode == 2 && command == 0x7a)
-	{
-		MyTrace("g_mode = 2, record packet of zd");
-
-		PZD pzd = (PZD)src;
-		if (pzd->param2 != -1)
-		{
-			MyTrace("Second Packet. set g_mode to 0");
-			memcpy(&g_zd, src, sizeof(ZD));
-			g_mode = 0;
-		}
-		else
-			MyTrace("First Packet. Do nothing.");
-
-	}
-	// 发出种地的第一个数据包
-	else if (g_mode == 3 && command == 0x48)
-	{
-		MyTrace("g_mode = 3, send first packet of zd, and set g_mode to 4");
-
-		PZD pzd = (PZD)src;
-		PZD pz = (PZD)dst;
-		memcpy(dst, &g_zd, sizeof(ZD));
-		pz->param2 = -1;
-		pz->syn = pzd->syn;
-
-		g_mode = 4;
-		return sizeof(ZD);
-	}
-	// 发出种地的第二个数据包
-	else if (g_mode == 4 && command == 0x48)
-	{
-		MyTrace("g_mode = 3, send second packet of zd, and set g_mode to 0");
-
-		PZD pzd = (PZD)src;
-		PZD pz = (PZD)dst;
-		memcpy(dst, &g_zd, sizeof(ZD));
-		pz->syn = pzd->syn;
-
-		g_mode = 0;
-		return sizeof(ZD);
-	}
 
 	// 正常情况什么都不做
 	memcpy(dst, src, len);
-	DumpSendBuffer(src, len);
+	// DumpSendBuffer(src, len);
 
 	return len; 
 }
