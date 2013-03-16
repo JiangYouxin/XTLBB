@@ -197,6 +197,10 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm"
 			>
 			<File
+				RelativePath=".\InjectHelper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\script.cpp"
 				>
 			</File>
@@ -225,6 +229,10 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc"
 			>
+			<File
+				RelativePath=".\InjectHelper.h"
+				>
+			</File>
 			<File
 				RelativePath=".\MainDlg.h"
 				>
