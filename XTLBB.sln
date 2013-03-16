@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InjectDLL", "InjectDLL\Inje
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "script", "script\script.vcproj", "{DDC73EA1-22A1-443E-8132-C077D54388FE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lua", "Lua\Lua.vcproj", "{A5BA1295-DE13-489E-AFAA-3F735F89C4C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{DDC73EA1-22A1-443E-8132-C077D54388FE}.Debug|Win32.Build.0 = Debug|Win32
 		{DDC73EA1-22A1-443E-8132-C077D54388FE}.Release|Win32.ActiveCfg = Release|Win32
 		{DDC73EA1-22A1-443E-8132-C077D54388FE}.Release|Win32.Build.0 = Release|Win32
+		{A5BA1295-DE13-489E-AFAA-3F735F89C4C5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A5BA1295-DE13-489E-AFAA-3F735F89C4C5}.Debug|Win32.Build.0 = Debug|Win32
+		{A5BA1295-DE13-489E-AFAA-3F735F89C4C5}.Release|Win32.ActiveCfg = Release|Win32
+		{A5BA1295-DE13-489E-AFAA-3F735F89C4C5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
