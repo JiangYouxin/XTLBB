@@ -73,8 +73,15 @@ int send_filter(char * dst, const char * src, int len)
 	return len; 
 }
 
+void SendKeyPress(HWND hWnd, int code)
+{
+	PostMessage(hWnd, WM_KEYDOWN, code, MapVirtualKey(code, 0) >> 8 | 0x01);
+	PostMessage(hWnd, WM_KEYUP, code, 0xC0000000 | MapVirtualKey(code, 0) >> 8 | 0x01);
+}
+
 int WINAPI fake_recv(SOCKET s, char * buf, int len, int flags)
 {
+	SendKeyPress(g_hWnd, 122);
 	return pOrigRecv(s, buf, len, flags);
 }
 
