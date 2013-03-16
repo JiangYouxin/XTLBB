@@ -59,6 +59,7 @@ int send_filter(char * dst, const char * src, int len)
 	{
 		PSELECT pse = (PSELECT)src;
 		g_skill.id = pse->id;
+		g_skill.syn = pse->syn;
 		memcpy(dst, &g_skill, sizeof(SKILL));
 		return sizeof(SKILL);
 	}
