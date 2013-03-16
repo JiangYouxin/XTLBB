@@ -201,6 +201,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\InjectScriptImpl.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\script.cpp"
 				>
 			</File>
@@ -243,6 +247,10 @@
 			>
 			<File
 				RelativePath=".\InjectHelper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\InjectScriptImpl.h"
 				>
 			</File>
 			<File

@@ -18,33 +18,6 @@ extern char g_sName[256];
 char g_dllName[] = "C:\\InjectDLL.dll";
 
 
-class SimpleScript: public ScriptBase
-{
-protected:
-	virtual void DoOnTimer()
-	{
-		DWORD t = m_fast ? 1 : 10;
-		if(m_timerCount == 1)
-			SendKeyPress(m_hWnd, 122);
-		else if(m_timerCount == t + 1)
-			SendKeyPress(m_hWnd, 123);
-		if(m_timerCount == 2 * t)
-			m_timerCount = 0;
-	}
-public:
-	virtual char * GetName()
-	{
-		if(!m_start)
-			return "简单打怪";
-		else if(m_fast)
-			return "简单打怪(快速)";
-		else
-			return "简单打怪(匀速)";
-	}
-protected:
-	DWORD m_fast;
-};
-
 /*
 class NormalScript: public ScriptBase
 {
@@ -413,21 +386,7 @@ private:
 class InjectScript: public ScriptBase
 {
 protected:
-	virtual void DoStart()
-	{
-		StartInject(m_hWnd);
-	}
-	virtual void DoStop()
-	{
-		StopInject(m_hWnd);
-	}
-	virtual char * GetName()
-	{
-		if(!m_start)
-			return "双儿辅助";
-		else 
-			return "双儿辅助(开启)";
-	}
+
 };
 #define WM_CHANGE_MODE (WM_USER + 0xc531)
 
