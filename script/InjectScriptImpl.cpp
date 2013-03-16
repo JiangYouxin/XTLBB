@@ -2,25 +2,15 @@
 #include "InjectScriptImpl.h"
 
 #include "InjectHelper.h"
+#include "FileUtility.h"
 
-InjectScriptImpl::InjectScriptImpl() 
-{
-	int i;
-	GetModuleFileName(NULL, szDllName, MAX_PATH);
-	for (i = strlen(szDllName) - 1; i >= 0; i--)
-	{
-		if (szDllName[i] == '\\')
-			break;
-	}
-	strcpy_s(szDllName + i + 1, MAX_PATH - i - 1, "InjectDll.dll");
-}
 void InjectScriptImpl::DoStart()
 {
-	StartInject(m_hWnd, szDllName);
+	StartInject(m_hWnd, GetInjectDllName());
 }
 void InjectScriptImpl::DoStop()
 {
-	StopInject(m_hWnd, szDllName);
+	StopInject(m_hWnd, GetInjectDllName());
 }
 char * InjectScriptImpl::GetName()
 {
