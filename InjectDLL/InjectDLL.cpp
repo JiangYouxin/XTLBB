@@ -12,9 +12,12 @@
 
 typedef DWORD SOCKET;
 extern "C" int WINAPI send(SOCKET s, const char *buf, int len, int flags);
+extern "C" int WINAPI recv(SOCKET s, char *buf, int len, int flags);
 typedef int (WINAPI *pSendProc)(SOCKET s, const char *buf, int len, int flags);
+typedef int (WINAPI *pRecvProc)(SOCKET s, char *buf, int len, int flags);
 
 pSendProc pOrigSend;
+pRecvProc pOrigRecv;
 HWND g_hWnd;
 #define WM_CHANGE_MODE (WM_USER + 0xc531)
 
@@ -70,6 +73,10 @@ int send_filter(char * dst, const char * src, int len)
 	return len; 
 }
 
+int WINAPI fake_recv(SOCKET s, char * buf, int len, int flags)
+{
+	return pOrigRecv(s, buf, len, flags);
+}
 
 int WINAPI fake_send(SOCKET s, const char * buf, int len, int flags)
 { 
@@ -110,6 +117,7 @@ void InitHook()
 	DetourTransactionBegin();
 	DetourUpdateThread(GetCurrentThread());
 	DetourAttach((PVOID *)&pOrigSend, fake_send);
+	DetourAttach((PVOID *)&pOrigRecv, fake_recv);
 	DetourTransactionCommit();	
 }
 
@@ -120,6 +128,7 @@ void FiniHook()
 	DetourTransactionBegin();
 	DetourUpdateThread(GetCurrentThread());
 	DetourDetach((PVOID *)&pOrigSend, fake_send);
+	DetourDetach((PVOID *)&pOrigRecv, fake_recv);
 	DetourTransactionCommit();		
 }
 
