@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InjectDLL", "InjectDLL\InjectDLL.vcproj", "{4844CF3F-8536-4506-A4CB-DCBD82B92814}"
 	ProjectSection(ProjectDependencies) = postProject
+		{DEE0433E-354D-4102-B12C-23E8E0452F2D} = {DEE0433E-354D-4102-B12C-23E8E0452F2D}
 		{A5BA1295-DE13-489E-AFAA-3F735F89C4C5} = {A5BA1295-DE13-489E-AFAA-3F735F89C4C5}
 	EndProjectSection
 EndProject
