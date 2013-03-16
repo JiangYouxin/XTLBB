@@ -1,6 +1,6 @@
 // script.h
 #pragma once
-#import "C:\\Windows\\QMDispatch.dll" no_namespace
+
 
 #include "UDPBroadcast.h"
 
@@ -14,102 +14,6 @@ extern DWORD g_bSaveBmp;
 extern DWORD g_bWhite;
 extern DWORD g_bGamer;
 extern char g_sName[256];
-
-class ScriptBase
-{
-public:
-	ScriptBase() 
-	{
-		m_start = false;
-	}
-	virtual ~ScriptBase() 
-	{
-	}
-	void Start()
-	{
-		if(!m_start)
-		{
-			m_start = true;
-			m_timerCount = 0;
-			m_hWnd = GetForegroundWindow();
-			m_hDC = GetDC(m_hWnd);
-
-			Beep(987, 100);
-
-			DoStart();
-		}
-		else
-		{
-			m_timerCount = 0;
-
-			/*
-			m_hWnd = GetForegroundWindow();
-			m_hDC = GetDC(m_hWnd);
-			*/
-
-			Beep(987, 100);
-
-			DoReload();
-		}
-	}
-	void Stop()
-	{
-		if(m_start)
-		{
-			m_start = false;
-
-			ReleaseDC(m_hWnd, m_hDC);
-			Beep(879, 100);
-			DoStop();
-		}
-	}
-	void OnTimer()
-	{
-		if(m_start)
-		{
-			m_timerCount++;
-			DoOnTimer();
-		}
-	}
-	virtual char * GetName()
-	{
-		return "";
-	}
-protected:
-	virtual void DoStart()
-	{
-	}
-	virtual void DoStop()
-	{
-	}
-	virtual void DoReload()
-	{
-	}
-	virtual void DoOnTimer()
-	{
-	}
-public:
-	static bool InitScript()
-	{
-		g_pbc = new UDPBroadcast(1822);
-
-		::CoInitialize(NULL);
-		g_obj.CreateInstance(__uuidof(QMFunction));
-		return !(g_obj == NULL);
-	}
-	static HANDLE GetEventHandle()
-	{
-		return g_pbc->GetEventHandle();
-	}
-protected:
-	HWND m_hWnd;
-	HDC m_hDC;
-	bool m_start;
-	int m_timerCount;
-	static IQMFunctionPtr g_obj;
-public:
-	static UDPBroadcast * g_pbc;
-};
 
 char g_dllName[] = "C:\\InjectDLL.dll";
 

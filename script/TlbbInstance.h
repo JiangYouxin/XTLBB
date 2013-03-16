@@ -27,7 +27,7 @@ public:
 	BOOL IsBlack(COLORREF cr);
 	BOOL IsBlue(COLORREF cr);
 	BOOL IsYellow(COLORREF cr);
-private:
+protected:
 	HWND m_hWnd;
 	HDC m_hDC;
 };

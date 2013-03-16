@@ -228,6 +228,10 @@
 				RelativePath=".\TlbbInstance.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\TlbbScript.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -255,6 +259,10 @@
 			</File>
 			<File
 				RelativePath=".\TlbbInstance.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TlbbScript.h"
 				>
 			</File>
 			<File
