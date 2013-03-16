@@ -1,0 +1,6 @@
+Debug
+Release
+*.vcproj.*
+*.aps
+*.ncb
+*.suo
