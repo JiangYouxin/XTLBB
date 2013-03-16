@@ -29,7 +29,7 @@ typedef struct _SD
 }SD, *PSD;
 
 // 放技能的数据包，大小是23 00
-#define SKILL_CODE 0xcd
+#define SKILL_CODE 0x1E
 // 取消技能的数据包，大小是08 00
 #define UN_SKILL_CODE 0xc1
 typedef struct _SKILL
@@ -50,7 +50,7 @@ typedef struct _SKILL
 } SKILL, * PSKILL;
 
 // 选怪的数据包，大小是08 00，最后8个字节是两个ID
-#define SELECT_CODE 0x15
+#define SELECT_CODE 0x7E
 typedef struct _SELECT
 {
 	WORD code;
