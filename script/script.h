@@ -21,14 +21,6 @@ char g_dllName[] = "C:\\InjectDLL.dll";
 class SimpleScript: public ScriptBase
 {
 protected:
-	virtual void DoStart()
-	{
-		m_fast = false;
-	}
-	virtual void DoReload()
-	{
-		m_fast = !m_fast;
-	}
 	virtual void DoOnTimer()
 	{
 		DWORD t = m_fast ? 1 : 10;

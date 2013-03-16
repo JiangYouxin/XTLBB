@@ -205,6 +205,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SimpleScriptImpl.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -251,6 +255,10 @@
 			</File>
 			<File
 				RelativePath=".\script.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SimpleScriptImpl.h"
 				>
 			</File>
 			<File

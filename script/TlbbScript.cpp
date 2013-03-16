@@ -9,6 +9,7 @@ void TlbbScript::Start()
 	{
 		m_start = true;
 		m_timerCount = 0;
+		// TODO: 这里是TlbbInstance的成员，要重新整理一下
 		m_hWnd = GetForegroundWindow();
 		m_hDC = GetDC(m_hWnd);
 		Beep(987, 100);
@@ -27,6 +28,7 @@ void TlbbScript::Stop()
 	{
 		m_start = false;
 
+		// TODO: 这里是TlbbInstance的成员，要重新整理一下
 		ReleaseDC(m_hWnd, m_hDC);
 		Beep(879, 100);
 		DoStop();
