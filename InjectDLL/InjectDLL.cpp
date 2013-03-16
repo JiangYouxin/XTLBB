@@ -16,15 +16,6 @@ typedef int (WINAPI *pSendProc)(SOCKET s, const char *buf, int len, int flags);
 
 pSendProc pOrigSend;
 HWND g_hWnd;
-
-// 存储上一次的选怪操作
-SELECT g_select;
-
-// g_select是否已经初始化
-bool g_select_init = false;
-
-DWORD g_mode = 0;
-
 #define WM_CHANGE_MODE (WM_USER + 0xc531)
 
 void MyTrace(const char *format, ...)
@@ -50,42 +41,27 @@ void DumpSendBuffer(const char *buf, int len)
 
 int send_filter(char * dst, const char * src, int len)
 {
+	// 存储上一次的打怪操作
+	static SKILL g_skill;
+	// g_skill是否已经初始化
+	static bool g_skill_init = false;
+
 	unsigned char command = (unsigned char)src[0];
 
-	// 普通打怪的辅助
-	if (g_mode == 0)
+	// 保存最新的打怪包
+	if(!g_skill_init && command == SKILL_CODE)
 	{
-		// 保存最新的选怪包
-		if(command == SELECT_CODE)
-		{
-			memcpy(&g_select, src, sizeof(SELECT));
-			g_select_init = true;
-		}
-
-		// 如果是取消攻击包，用选怪包代替
-		if(command == UN_SKILL_CODE && g_select_init)
-		{
-			PSELECT pse = (PSELECT)src;
-			PSELECT ps = (PSELECT)dst;
-			memcpy(dst, &g_select, sizeof(SELECT));
-			ps->syn = pse->syn;
-			return sizeof(SELECT);
-		}
+		memcpy(&g_skill, src, sizeof(SKILL));
+		g_skill_init = true;
 	}
-	//	强行重连的处理
-	else if (g_mode == 1)
+	// 如果是选怪包，用打怪包代替
+	if(command == SELECT_CODE && g_skill_init)
 	{
 		PSELECT pse = (PSELECT)src;
-		PSELECT ps = (PSELECT)dst;
-		memset(dst, 0xC4, sizeof(SELECT));
-
-		ps->syn = pse->syn;
-
-		g_mode = 0;
-
-		return sizeof(SELECT);
+		g_skill.id = pse->id;
+		memcpy(dst, &g_skill, sizeof(SKILL));
+		return sizeof(SKILL);
 	}
-
 	// 正常情况什么都不做
 	memcpy(dst, src, len);
 	// DumpSendBuffer(src, len);
